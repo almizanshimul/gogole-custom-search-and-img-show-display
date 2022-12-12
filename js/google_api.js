@@ -3,7 +3,10 @@ const searchPhone = () => {
     const searchText = searchField.value;
     // searchField.value = '';
 
-
+// https://www.googleapis.com/customsearch/v1?key=AIzaSyDWWP1v69NhkAZ2ux7ad32pMdS9nSFYqOU&cx=f359936bc6ee544f2&q=lectures
+    
+const google_api_key= 'AIzaSyDWWP1v69NhkAZ2ux7ad32pMdS9nSFYqOU'
+const cx_api_key = 'f359936bc6ee544f2'
     if (searchText == '') {
         alert('Please enter a phone name')
     } else {
