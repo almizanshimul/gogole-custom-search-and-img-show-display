@@ -11,7 +11,7 @@ const cx_api_key = 'f359936bc6ee544f2'
         alert('Please enter a phone name')
     } else {
         // fetch data 
-        const url = `https://www.googleapis.com/customsearch/v1?key=${google_api_key}&cx=${cx_api_key}&searchType=image&q=${searchText}`;
+        const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CX_API_KEY}&searchType=image&q=${searchText}`;
 
         fetch(url)
             .then(res => res.json())
