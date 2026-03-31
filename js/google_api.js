@@ -2,16 +2,16 @@ const searchPhone = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value;
     // searchField.value = '';
+
 // https://www.googleapis.com/customsearch/v1?key=AIzaSyDWWP1v69NhkAZ2ux7ad32pMdS9nSFYqOU&cx=f359936bc6ee544f2&q=lectures
     
 const google_api_key= 'AIzaSyDWWP1v69NhkAZ2ux7ad32pMdS9nSFYqOU'
 const cx_api_key = 'f359936bc6ee544f2'
-
     if (searchText == '') {
         alert('Please enter a phone name')
     } else {
         // fetch data 
-        const url = `https://www.googleapis.com/customsearch/v1?key=${google_api_key}&cx=${cx_api_key}&searchType=image&q=${searchText}`;
+        const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CX_API_KEY}&searchType=image&q=${searchText}`;
 
         fetch(url)
             .then(res => res.json())
