@@ -16,7 +16,7 @@ const searchPhone = (page = 1) => {
     const access_key = 'EAnrClTuC2toobMDm3srVnawmoHGPvJGA2gd7cTXwN4'
     const secret_key = 'MXR3V3M3GXmcsRKOlgZkL_4FjfhY5Q8Q0E8bWGIM4qw'
 
-    const url = `https://api.unsplash.com/search/photos?client_id=${access_key}&query=${searchText}&page=${page}&per_page=6`;
+    const url = `https://api.unsplash.com/search/photos?client_id=${access_key}&query=${searchText}&page=${page}&per_page=12`;
 
     fetch(url)
         .then(res => res.json())
@@ -37,10 +37,10 @@ const displayResult = images => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = ` <div class="card border-0 shadow">
-                            <img src="${image?.urls?.thumb}" class="w-50 mx-auto my-4" alt="${image?.alt_description}" width="200" height="200" style="height:200px; object-fit:contain;">
+                            <img src="${image?.urls?.thumb}" class="w-50 mx-auto my-4" alt="${image?.alt_description}" width="200" height="200" style="height:200px; object-fit:cover; loading="lazy">
                             <div class="card-body text-center w-75 mx-auto">
-                            <p>${image?.alt_description}</p>
-                                <h5 class="card-title">Author Name: ${image?.user?.name}</h5>
+                            <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${image?.alt_description}</p>
+                                <h5 class="card-title" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;>Author Name: ${image?.user?.name}</h5>
                                 <a class="btn btn-primary text-white my-3" type="button" id="btn-details" href=${image?.links?.html} target="_blank">More details</a>
                             </div>
                          </div>`;
@@ -64,12 +64,14 @@ const updatePagination = (totalPages) => {
     prevBtn.onclick = () => {
         if (currentPage > 1) {
             searchPhone(currentPage - 1);
+            window.scrollTo(0, 0);
         }
     };
 
     nextBtn.onclick = () => {
         if (currentPage < totalPages) {
             searchPhone(currentPage + 1);
+            window.scrollTo(0, 0);
         }
     };
 };
